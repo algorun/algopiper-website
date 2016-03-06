@@ -1,0 +1,23 @@
+{
+  "name": "AlgoPiper-Website",
+  "version": "1.0.0",
+  "description": "AlgoPiper website",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Abdelrahman Hosny",
+  "dependencies": {
+    "express": "4.13.1",
+    "path": "0.12.7",
+    "express-dot": "0.1.0",
+    "cookie-parser": "1.4.1",
+    "body-parser": "1.14.2",
+    "multer": "1.1.0",
+    "cookie-parser": "1.4.1",
+    "request":"2.69.0",
+    "node-uuid": "1.4.7"  
+  },
+  "repository": "https://github.com/algorun/algopiper-website",
+  "license": "SEE LICENSE IN LICENSE file"
+}
