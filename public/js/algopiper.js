@@ -12,29 +12,6 @@ if(localStorage.getItem('algopiper-container') != undefined){
         $('#defaultCountdown').countdown({until: countUntil});
     }
 }
-
-$('#doc-1').click(function(){
-    $('.doc-side-nav').attr("class","doc-side-nav");
-    $('#doc-1').attr("class","doc-side-nav doc-active");
-    
-    $('.algopiper-section').hide();
-    $('#algopiper').show();
-});
-$('#doc-2').click(function(){
-    $('.doc-side-nav').attr("class","doc-side-nav");
-    $('#doc-2').attr("class","doc-side-nav doc-active");
-    
-    $('.algopiper-section').hide();
-    $('#guide').show();
-    
-});
-$('.algopiper-try').click(function(){
-    $('.doc-side-nav').attr("class","doc-side-nav");
-    $('#doc-3').attr("class","doc-side-nav doc-active");
-    
-    $('.algopiper-section').hide();
-    $('#try').show();
-});
 $('.algopiper-submit').click(function(){
     $('.doc-side-nav').attr("class","doc-side-nav");
     $('#doc-4').attr("class","doc-side-nav doc-active");
