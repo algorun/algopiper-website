@@ -38,10 +38,10 @@ $('#deploy-btn').click(function(){
 	       .done(function(data,textStatus,jqXHR) {
                data = JSON.parse(data);
                if(data['status'] === 'success'){
-                   setTimeout(openTab, 500);
                    function openTab(){
                        window.open(data['endpoint'], '_blank');
                    }
+                   setTimeout(openTab, 500);
                    localStorage.setItem('algopiper-container', JSON.stringify({'start_time': new Date, 'endpoint': data['endpoint']}));
                    var now = new Date();
                    var two_hours = 24 * 60 * 60 * 1000;
