@@ -60,13 +60,13 @@ app.get('/documentation', function (req, res) {
 });
 
 
-app.get('/submit-workflow', function (req, res) {
+app.get('/submit-pipeline', function (req, res) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     res.status = 200;
     
     var templateData = {title: "Submit Workflow", submit_tab: "class='active'"};
-	res.render('submit-workflow.html', templateData);
+	res.render('submit-pipeline.html', templateData);
 });
 
 app.get('/try-algopiper', function(req, res){
