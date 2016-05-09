@@ -15,13 +15,13 @@ if(localStorage.getItem('algopiper-container') != undefined){
 $('.algopiper-submit').click(function(){
     $('.doc-side-nav').attr("class","doc-side-nav");
     $('#doc-4').attr("class","doc-side-nav doc-active");
-    
+
     $('.algopiper-section').hide();
     $('#submit').show();
 });
 $('#deploy-btn').click(function(){
     $('#deploy-btn').attr('disabled', 'disabled');
-    $('#deploy-btn').html('deploying ..');
+    $('#deploy-btn').html('navigating ..');
     if(localStorage.getItem('algopiper-container') != undefined){
         // there is a container deployed before for this host. check its start time.
         var now = new Date();
@@ -30,12 +30,13 @@ $('#deploy-btn').click(function(){
         if(time_elapsed < two_hours){
             window.open(JSON.parse(localStorage.getItem('algopiper-container'))['endpoint'], '_blank');
             $('#deploy-btn').removeAttr('disabled');
-            $('#deploy-btn').html('DEPLOY!');
+            $('#deploy-btn').html('TRY NOW!');
             return;
         }
     }
     var jqxhr = $.get( "/try-algopiper")
 	       .done(function(data,textStatus,jqXHR) {
+               console.log(data);
                data = JSON.parse(data);
                if(data['status'] === 'success'){
                    function openTab(){

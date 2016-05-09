@@ -16,7 +16,11 @@
     "multer": "1.1.0",
     "cookie-parser": "1.4.1",
     "request":"2.69.0",
-    "node-uuid": "1.4.7"  
+    "node-uuid": "1.4.7",
+    "dockerode":"2.2.10",
+    "cron": "1.1.0",
+    "libnmap": "0.2.29"  ,
+    "fs": "0.0.2"
   },
   "repository": "https://github.com/algorun/algopiper-website",
   "license": "SEE LICENSE IN LICENSE file"
