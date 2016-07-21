@@ -1,57 +1,12 @@
-<div class="row" style="width: 90%; margin-left:5%; margin-right: 5%;">
-        <div class="col-md-12 col-sm-12 algopiper-section">
-        <h2>Follow these steps to create a workflow!</h2>
-        <h3>STEP 1: Deploy AlgoPiper </h3>
-        <h4 style="line-height: 150%;">From the top navigation bar, choose <a href="/try" target="_blank">Try Now!</a>. Hit the Deploy button. This will open a new tab with an isolated AlgoPiper environment for you (allow popups when asked). The main AlgoPiper interface looks like: </h4>
-        <img src="img/algopiper-steps/algopiper-1.png" style="width: 100%">
-        
-        <h3>STEP 2: Drag AlgoRun Node and Choose an Algorithm</h3>
-        <h4 style="line-height: 150%;">The left sidebar shows a number of available nodes that can be added to a workflow. Drag an AlgoRun node into the workspace. Double click a node to choose an algorithm. When you <a href="/submit-algorithm" target="_blank">submit algorithms</a> to AlgoRun, it will be automatially available in the list</h4>
-        <img src="img/algopiper-steps/algopiper-2.png" style="width: 100%">
-        <br><br>
-        <img src="img/algopiper-steps/algopiper-3.png" style="width: 100%">
-        <br><br>
-        <img src="img/algopiper-steps/algopiper-4.png" style="width: 100%">
-        <br><br>
-        <img src="img/algopiper-steps/algopiper-5.png" style="width: 100%">
-        <br><br>
-        <img src="img/algopiper-steps/algopiper-6.png" style="width: 100%">
-        
-        <h3>STEP 3: Read Algorithm Information</h3>
-        <h4 style="line-height: 150%;">On the right sidebar, the info tab will show detailed information about the algorithm and its usage. Make sure to check the input and output format to be able to build a workflow correctly. Check <a href="/input-output-types" target='_blank'>our list</a> of input and ouptput types.</h4>
-        <img src="img/algopiper-steps/algopiper-7.png" style="width: 100%">
-        
-        <h3>STEP 4: Add Input and Output Nodes</h3>
-        <h4 style="line-height: 150%;">Input nodes are used to start the workflow computation. Edit the input node by adding your input in the text box. Output nodes are used to print the output of the computation to the right sidebar (OUTPUT tab).</h4>
-        <img src="img/algopiper-steps/algopiper-8.png" style="width: 100%">
-        <br><br>
-        <img src="img/algopiper-steps/algopiper-9.png" style="width: 100%">
-        
-        <h3>STEP 5: Connect Nodes</h3>
-        <h4 style="line-height: 150%;">Connect the right dot of the input node to the left dot of the AlgoRun node. Connect the right dot of the AlgoRun node to the left dot of the output node.</h4>
-        <img src="img/algopiper-steps/algopiper-10.png" style="width: 100%">
-        
-        <h3>STEP 6: Deploy and Change Parameters</h3>
-        <h4 style="line-height: 150%;">On the top right corner, hit deploy. AlgoRun node status will change to ready. On the right sidebar, you can change the parameters of this node from the Parameters tab.<br><br><b>NOTE:</b> In some browsers, you may need to refresh the page after you hit deploy for the node status (e.g. the green ready) to show up. This doesn't affect the operation of the workflow though.</h4>
-        <img src="img/algopiper-steps/algopiper-11.png" style="width: 100%">
-        <br><br>
-        <img src="img/algopiper-steps/algopiper-12.png" style="width: 100%">
-        
-        <h3>STEP 7: Start the Computation</h3>
-        <h4 style="line-height: 150%;">Hit the button on the left of the input node to trigger the workflow. This will inject the input data to the AlgoRun node. The AlgoRun node will automatically perform the computation and passes the output to the next node; which is the output node in this simple workflow. The output node will print the output to the right sidebar. Openning the log file of the AlgoRun node helps troubleshoot complex workflows.</h4>
-        <img src="img/algopiper-steps/algopiper-13.png" style="width: 100%">
-        <br><br>
-        <img src="img/algopiper-steps/algopiper-14.png" style="width: 100%">
-        <br><br>
-        <img src="img/algopiper-steps/algopiper-15.png" style="width: 100%">
-        
-        <h3>STEP 8: Export Workflows</h3>
-        <h4 style="line-height: 150%;">From the top right corner, export the workflow to a local file for future use. Using AlgoPiper through AlgoRun website is free but the session is limited to 24 hours, then your isolated environment will be premenantly delelted. You can start a new session (when the first one is done) and import your saved workflow.<br><br><b>TIP:</b> <a href="/submit-workflow" style="cursor:pointer">Submit a workflow</a> from the top navigation bar to host your workflows permanently on our servers ..</h4>
-        <img src="img/algopiper-steps/algopiper-16.png" style="width: 100%">
-        <br><br>
-        <img src="img/algopiper-steps/algopiper-17.png" style="width: 100%">
-        <br><br>
-        <img src="img/algopiper-steps/algopiper-18.png" style="width: 100%">
+<div class="row">
+    <div class="col-md-3 doc-side-nav-col">
+        <h4 class="doc-side-nav doc-active" id="doc-1">User Guide</h4>
+        <h4 class="doc-side-nav" id="doc-3">Examples</h4>
+    </div>
+    <div class="col-md-9">
+        <iframe src="resources/user-guide.pdf" width="100%" style="height: 90vh" id="doc-pdf"></iframe>
     </div>
 </div>
 
+<!-- Javascripts -->
+<script src="js/documentation.js"></script>
