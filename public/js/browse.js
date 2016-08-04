@@ -242,20 +242,41 @@ search.addWidget(
                 });
 		        pipeline_keywords += '</span>'
                 var pipeline_json = data.pipeline_json;
+                var pipeline_screenshot = data.pipeline_screenshot;
                 
-                var result_card = "<div class='col-md-4 col-sm-6'> \
-	        			<div class='service-wrapper'> \
-		        			<h2 class='search'>" + pipeline_name + "</h2>";
-                result_card += " \
-		        			<p style='border-bottom:2px solid #2C3D50;'>" + pipeline_summary + "</p> \
-		        			<p>" + pipeline_keywords + "</p> \
-		        			<div style='width:82%;position:absolute;'><a href='/resources/pipelines/" + pipeline_json + "' target='_blank' class='btn' style='text-decoration:none;'>Copy pipeline JSON</a></div> \
-		        		</div> \
-	        		</div>";
+                
+                
+                
+                var result_card = "<div class='service-wrapper'> \
+                    <div class='col-md-4 col-sm-4' style='height:100%'> \
+                        <h2 class='search'>" + pipeline_name + "</h2> \
+                        <p style='border-bottom:2px solid #2C3D50;'>" + pipeline_summary + "</p> \
+                        <p>" + pipeline_keywords + "</p> \
+                    </div> \
+                    <div class='col-md-6 col-sm-6'> \
+                        <img src='/resources/pipelines/" + pipeline_screenshot + "' style='width:100%; height: 100%'> \
+                    </div> \
+                    <div class='col-md-2 col-sm-2'> \
+                        <button class='btn' style='width: 100%' onclick='openJSON(\"" + pipeline_json + "\")'>Open JSON</button> \
+                        <br><br> \
+                        <button class='btn' style='width: 100%' onclick='launchAlgoPiper()'>Launch AlgoPiper</button> \
+                        <br><br> \
+                        <strong>INSTRUCTIONS</strong><br> \
+                        1. Open JSON<br> 2. Select all and Copy<br> 3. Import to AlgoPiper \
+                    </div> \
+                </div>";
+                
+                
                 return result_card;
             },
             hitsPerPage: 6
         }
     }));
-
 search.start();
+function openJSON(json_file){
+    window.open('/resources/pipelines/' + json_file, '_blank')
+}
+
+function launchAlgoPiper(){
+    window.open('/try', '_blank')
+}
