@@ -6,7 +6,7 @@ function container_exists(){
     var time_remaining = two_hours - time_elapsed;
     var countUntil = now.add_millis(time_remaining);
     $('#defaultCountdown').countdown({until: countUntil});
-    window.open(JSON.parse(localStorage.getItem('algopiper-container'))['endpoint'], '_blank');
+    window.open(JSON.parse(localStorage.getItem('algopiper-container'))['endpoint'], '_self');
     $('#deploy-btn').removeAttr('disabled');
     $('#deploy-btn').html('NAVIGATE NOW!');
     $('#loading-img').hide();
@@ -18,9 +18,9 @@ function container_request(){
                data = JSON.parse(data);
                if(data['status'] === 'success'){
                    function openTab(){
-                       window.open(data['endpoint'], '_blank');
+                       window.open(data['endpoint'], '_self');
                    }
-                   setTimeout(openTab, 1000);
+                   setTimeout(openTab, 5000);
                    localStorage.setItem('algopiper-container', JSON.stringify({'start_time': new Date, 'endpoint': data['endpoint']}));
                    var now = new Date();
                    var two_hours = 24 * 60 * 60 * 1000;

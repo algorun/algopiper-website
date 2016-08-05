@@ -96,7 +96,7 @@ app.get('/', function (req, res) {
 	  res.render('index.html', templateData);
 });
 
-app.get('/try', function (req, res) {
+app.get('/launch', function (req, res) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     res.status = 200;

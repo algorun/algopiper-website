@@ -244,9 +244,6 @@ search.addWidget(
                 var pipeline_json = data.pipeline_json;
                 var pipeline_screenshot = data.pipeline_screenshot;
                 
-                
-                
-                
                 var result_card = "<div class='service-wrapper'> \
                     <div class='col-md-4 col-sm-4' style='height:100%'> \
                         <h2 class='search'>" + pipeline_name + "</h2> \
@@ -278,5 +275,5 @@ function openJSON(json_file){
 }
 
 function launchAlgoPiper(){
-    window.open('/try', '_self');
+    window.open('/launch', '_self');
 }
