@@ -275,5 +275,5 @@ function openJSON(json_file){
 }
 
 function launchAlgoPiper(){
-    window.open('/launch', '_self');
+    window.open('/launch', '_blank');
 }
