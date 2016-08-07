@@ -254,12 +254,7 @@ search.addWidget(
                         <img src='/resources/pipelines/" + pipeline_screenshot + "' style='width:100%; height: 100%'> \
                     </div> \
                     <div class='col-md-2 col-sm-2'> \
-                        <button class='btn' style='width: 100%' onclick='openJSON(\"" + pipeline_json + "\")'>Open JSON</button> \
-                        <br><br> \
-                        <button class='btn' style='width: 100%' onclick='launchAlgoPiper()'>Launch AlgoPiper</button> \
-                        <br><br> \
-                        <strong>INSTRUCTIONS</strong><br> \
-                        1. Open JSON<br> 2. Select all and Copy<br> 3. Import to AlgoPiper \
+                        <button class='btn' style='width: 100%; margin-top:110px;' onclick='launchAlgoPiper(\"" + pipeline_json + "\", \"" + pipeline_name + "\")' id='" + pipeline_json.replace('.', '_').replact('-', '_') + "'>Launch on AlgoPiper</button> \
                     </div> \
                 </div>";
                 
@@ -270,10 +265,27 @@ search.addWidget(
         }
     }));
 search.start();
-function openJSON(json_file){
-    window.open('/resources/pipelines/' + json_file, '_blank')
-}
 
-function launchAlgoPiper(){
-    window.open('/launch', '_blank');
+function launchAlgoPiper(pipeline_file, pipeline_name){
+    $('#' + pipeline_json.replace('.', '_').replact('-', '_')).html('launching ..');
+    $('#' + pipeline_json.replace('.', '_').replact('-', '_')).attr('disabled', true);
+    var jqxhr = $.get( '/try-algopiper?pipeline_file=' + pipeline_file + "&pipeline_name=" + pipeline_name)
+	       .done(function(data,textStatus,jqXHR) {
+               console.log(data);
+               data = JSON.parse(data);
+               if(data['status'] === 'success'){
+                   function openTab(){
+                       window.open(data['endpoint'], '_blank');
+                   }
+                   setTimeout(openTab, 5000);
+                   localStorage.setItem('algopiper-container', JSON.stringify({'start_time': new Date, 'endpoint': data['endpoint']}));
+                   $('#' + pipeline_json.replace('.', '_').replact('-', '_')).html('Launch on AlgoPiper ..');
+                   $('#' + pipeline_json.replace('.', '_').replact('-', '_')).removeAttr('disabled');
+               }
+           })
+        .fail(function(data) {
+            $('#' + pipeline_json.replace('.', '_').replact('-', '_')).html('Launch on AlgoPiper ..');
+            $('#' + pipeline_json.replace('.', '_').replact('-', '_')).removeAttr('disabled');
+            alert(data);
+        });
 }

@@ -149,19 +149,32 @@ app.get('/try-algopiper', function(req, res){
 
     var docker_image = 'algorun/algopiper';
     var node_id = req.cookies['AlgoPiper'];
+    var pipeline_file = req.params.pipeline_file;
+    var pipeline_name = req.params.pipeline_name;
+    
     if(node_id == undefined){
         node_id = uuid.v4();
         res.cookie('AlgoPiper', node_id);
     }
-
-    request.post('http://algopiper.org/deploy', {form:{'node_id': node_id}}, function(error, response, body){
+    
+    if (pipeline_file != undefined && pipeline_name != undefined){
+        node_id = uuid.v4();
+        res.cookie('AlgoPiper', node_id);
+        request.post('http://algopiper.org/deploy', {form:{'node_id': node_id, 'pipeline_file': pipeline_file, 'pipeline_name':     pipeline_name}}, function(error, response, body){
+            res.send(body);
+        });    
+    } else {
+        request.post('http://algopiper.org/deploy', {form:{'node_id': node_id}}, function(error, response, body){
         res.send(body);
     });
+    }
 });
 
 app.post('/deploy', function(req, res){
     var docker_image = 'algorun/algopiper';
     var node_id = req.body.node_id;
+    var pipeline_file = req.body.pipeline_file;
+    var pipeline_name = req.body.pipeline_name;
 
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
@@ -183,8 +196,14 @@ app.post('/deploy', function(req, res){
             res.send({"status": 'fail', "error_message": "failed to allocate port number"});
             return;
         }
-
-        docker.createContainer({Image: docker_image, Env: ['MANAGER=manager.algorun.org'], Cmd: ['/bin/bash']}, function (err, container) {
+        var env_list;
+        if (pipeline_file != undefined && pipeline_name != undefined){
+            pipeline_url = "http://algopiper.org/resources/pipelines/" + pipeline_file;
+            env_list = ['MANAGER=manager.algorun.org', 'PIPELINE_URL='+pipeline_url, 'PIPELINE_NAME=\"'+pipeline_name + '\"'];
+        } else{
+            env_list = ['MANAGER=manager.algorun.org'];
+        }
+        docker.createContainer({Image: docker_image, Env: env_list, Cmd: ['/bin/bash']}, function (err, container) {
             if(err){
                 res.status = 500;
                 res.send({"status": 'fail', "error_message": JSON.stringify(err)});
