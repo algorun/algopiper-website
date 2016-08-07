@@ -149,8 +149,8 @@ app.get('/try-algopiper', function(req, res){
 
     var docker_image = 'algorun/algopiper';
     var node_id = req.cookies['AlgoPiper'];
-    var pipeline_file = req.params.pipeline_file;
-    var pipeline_name = req.params.pipeline_name;
+    var pipeline_file = req.query.pipeline_file;
+    var pipeline_name = req.query.pipeline_name;
     
     if(node_id == undefined){
         node_id = uuid.v4();
@@ -199,7 +199,7 @@ app.post('/deploy', function(req, res){
         var env_list;
         if (pipeline_file != undefined && pipeline_name != undefined){
             pipeline_url = "http://algopiper.org/resources/pipelines/" + pipeline_file;
-            env_list = ['MANAGER=manager.algorun.org', 'PIPELINE_URL='+pipeline_url, 'PIPELINE_NAME=\"'+pipeline_name + '\"'];
+            env_list = ['MANAGER=manager.algorun.org', 'PIPELINE_URL='+pipeline_url, 'PIPELINE_NAME='+pipeline_name];
         } else{
             env_list = ['MANAGER=manager.algorun.org'];
         }
