@@ -254,7 +254,7 @@ search.addWidget(
                         <img src='/resources/pipelines/" + pipeline_screenshot + "' style='width:100%; height: 100%'> \
                     </div> \
                     <div class='col-md-2 col-sm-2'> \
-                        <button class='btn' style='width: 100%; margin-top:110px;' onclick='launchAlgoPiper(\"" + pipeline_json + "\", \"" + pipeline_name + "\")' id='" + pipeline_json.replace('.', '_').replact('-', '_') + "'>Launch on AlgoPiper</button> \
+                        <button class='btn' style='width: 100%; margin-top:110px;' onclick='launchAlgoPiper(\"" + pipeline_json + "\", \"" + pipeline_name + "\")' id='" + pipeline_json.replace('.', '_').replace('-', '_') + "'>Launch on AlgoPiper</button> \
                     </div> \
                 </div>";
                 
@@ -267,8 +267,8 @@ search.addWidget(
 search.start();
 
 function launchAlgoPiper(pipeline_file, pipeline_name){
-    $('#' + pipeline_json.replace('.', '_').replact('-', '_')).html('launching ..');
-    $('#' + pipeline_json.replace('.', '_').replact('-', '_')).attr('disabled', true);
+    $('#' + pipeline_json.replace('.', '_').replace('-', '_')).html('launching ..');
+    $('#' + pipeline_json.replace('.', '_').replace('-', '_')).attr('disabled', true);
     var jqxhr = $.get( '/try-algopiper?pipeline_file=' + pipeline_file + "&pipeline_name=" + pipeline_name)
 	       .done(function(data,textStatus,jqXHR) {
                console.log(data);
@@ -279,13 +279,13 @@ function launchAlgoPiper(pipeline_file, pipeline_name){
                    }
                    setTimeout(openTab, 5000);
                    localStorage.setItem('algopiper-container', JSON.stringify({'start_time': new Date, 'endpoint': data['endpoint']}));
-                   $('#' + pipeline_json.replace('.', '_').replact('-', '_')).html('Launch on AlgoPiper ..');
-                   $('#' + pipeline_json.replace('.', '_').replact('-', '_')).removeAttr('disabled');
+                   $('#' + pipeline_json.replace('.', '_').replace('-', '_')).html('Launch on AlgoPiper ..');
+                   $('#' + pipeline_json.replace('.', '_').replace('-', '_')).removeAttr('disabled');
                }
            })
         .fail(function(data) {
-            $('#' + pipeline_json.replace('.', '_').replact('-', '_')).html('Launch on AlgoPiper ..');
-            $('#' + pipeline_json.replace('.', '_').replact('-', '_')).removeAttr('disabled');
+            $('#' + pipeline_json.replace('.', '_').replace('-', '_')).html('Launch on AlgoPiper ..');
+            $('#' + pipeline_json.replace('.', '_').replace('-', '_')).removeAttr('disabled');
             alert(data);
         });
 }
