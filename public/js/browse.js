@@ -274,10 +274,13 @@ function launchAlgoPiper(pipeline_json, pipeline_name){
                console.log(data);
                data = JSON.parse(data);
                if(data['status'] === 'success'){
-                    window.open(data['endpoint'], '_blank');
-                   localStorage.setItem('algopiper-container', JSON.stringify({'start_time': new Date, 'endpoint': data['endpoint']}));
-                   $('#' + pipeline_json.replace('.', '_').replace('-', '_')).html('Launch on AlgoPiper');
-                   $('#' + pipeline_json.replace('.', '_').replace('-', '_')).removeAttr('disabled');
+                    function openTab(){
+                       window.open(data['endpoint'], '_blank');
+                        localStorage.setItem('algopiper-container', JSON.stringify({'start_time': new Date, 'endpoint': data['endpoint']}));
+                        $('#' + pipeline_json.replace('.', '_').replace('-', '_')).html('Launch on AlgoPiper');
+                        $('#' + pipeline_json.replace('.', '_').replace('-', '_')).removeAttr('disabled');
+                   }
+                   setTimeout(openTab, 3000);
                }
            })
         .fail(function(data) {
