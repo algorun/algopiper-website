@@ -271,7 +271,6 @@ function launchAlgoPiper(pipeline_json, pipeline_name){
     $('#' + pipeline_json.replace('.', '_').replace('-', '_')).attr('disabled', true);
     var jqxhr = $.get( '/try-algopiper?pipeline_file=' + pipeline_json + "&pipeline_name=" + pipeline_name)
 	       .done(function(data,textStatus,jqXHR) {
-               console.log(data);
                data = JSON.parse(data);
                if(data['status'] === 'success'){
                     function openTab(){

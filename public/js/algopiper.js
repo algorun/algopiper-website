@@ -19,7 +19,7 @@ function container_request(){
                    function openTab(){
                        window.open(data['endpoint'], '_self');
                    }
-                   setTimeout(openTab, 5000);
+                   setTimeout(openTab, 2000);
                    localStorage.setItem('algopiper-container', JSON.stringify({'start_time': new Date, 'endpoint': data['endpoint']}));
                    var now = new Date();
                    var two_hours = 24 * 60 * 60 * 1000;
