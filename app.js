@@ -160,13 +160,13 @@ app.get('/try-algopiper', function(req, res){
     if (pipeline_file != undefined && pipeline_name != undefined){
         node_id = uuid.v4();
         res.cookie('AlgoPiper', node_id);
-        request.post('http://algopiper.org/deploy', {form:{'node_id': node_id, 'pipeline_file': pipeline_file, 'pipeline_name':     pipeline_name}}, function(error, response, body){
+        request.post('http://manager.algorun.org/api/v1/deploy', {form:{'node_id': node_id, 'docker_image': 'algorun/algopiper', 'pipeline_file': pipeline_file, 'pipeline_name': pipeline_name}}, function(error, response, body){
             res.send(body);
         });    
     } else {
-        request.post('http://algopiper.org/deploy', {form:{'node_id': node_id}}, function(error, response, body){
-        res.send(body);
-    });
+        request.post('http://manager.algorun.org/api/v1/deploy', {form:{'node_id': node_id, 'docker_image': 'algorun/algopiper'}}, function(error, response, body){
+            res.send(body);
+        });
     }
 });
 

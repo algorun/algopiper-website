@@ -14,7 +14,6 @@ function container_exists(){
 function container_request(){
     var jqxhr = $.get( "/try-algopiper")
 	       .done(function(data,textStatus,jqXHR) {
-               console.log(data);
                data = JSON.parse(data);
                if(data['status'] === 'success'){
                    function openTab(){
