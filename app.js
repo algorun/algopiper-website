@@ -169,6 +169,16 @@ app.get('/try-algopiper', function(req, res){
         });
     }
 });
+app.get('/temporary-24hr-algopiper', function(req, res){
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    res.status = 200;
+
+    var algopiper = req.query.algopiper;
+    
+    var templateData = {algopiper: algopiper, title: "Try AlgoPiper", try_tab: "class='active'"};
+    res.render('temporary-algopiper.html', templateData);
+});
 
 app.post('/deploy', function(req, res){
     var docker_image = 'algorun/algopiper';

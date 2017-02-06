@@ -6,9 +6,9 @@ function container_exists(){
     var time_remaining = two_hours - time_elapsed;
     var countUntil = now.add_millis(time_remaining);
     $('#defaultCountdown').countdown({until: countUntil});
-    window.open(JSON.parse(localStorage.getItem('algopiper-container'))['endpoint'], '_self');
+    window.open('/temporary-24hr-algopiper?algopiper=' + JSON.parse(localStorage.getItem('algopiper-container'))['endpoint']);
     $('#deploy-btn').removeAttr('disabled');
-    $('#deploy-btn').html('NAVIGATE NOW!');
+    $('#deploy-btn').html('Launch Now!');
     $('#loading-img').hide();
 }
 function container_request(){
@@ -17,7 +17,7 @@ function container_request(){
                data = JSON.parse(data);
                if(data['status'] === 'success'){
                    function openTab(){
-                       window.open(data['endpoint'], '_self');
+                       window.open('/temporary-24hr-algopiper?algopiper=' + data['endpoint']);
                    }
                    setTimeout(openTab, 2000);
                    localStorage.setItem('algopiper-container', JSON.stringify({'start_time': new Date, 'endpoint': data['endpoint']}));
@@ -32,8 +32,7 @@ function container_request(){
         })
         .always(function(){
             $('#deploy-btn').removeAttr('disabled');
-            $('#deploy-btn').html('NAVIGATE NOW!');
-            $('#loading-img').hide();
+            $('#deploy-btn').html('Launch Now!');
         });
 }
 
@@ -49,14 +48,6 @@ if(localStorage.getItem('algopiper-container') != undefined){
 } else {
     container_request();
 }
-
-$('.algopiper-submit').click(function(){
-    $('.doc-side-nav').attr("class","doc-side-nav");
-    $('#doc-4').attr("class","doc-side-nav doc-active");
-
-    $('.algopiper-section').hide();
-    $('#submit').show();
-});
 
 $('#deploy-btn').click(function(){
    container_exists(); 
