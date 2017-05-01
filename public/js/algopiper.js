@@ -17,7 +17,7 @@ function container_request(){
                data = JSON.parse(data);
                if(data['status'] === 'success'){
                    function openTab(){
-                       window.open('/temporary-24hr-algopiper?algopiper=' + data['endpoint']);
+                       window.open(data['endpoint']);
                    }
                    setTimeout(openTab, 2000);
                    localStorage.setItem('algopiper-container', JSON.stringify({'start_time': new Date, 'endpoint': data['endpoint']}));
